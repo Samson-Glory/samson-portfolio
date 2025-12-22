@@ -1,0 +1,45 @@
+#projects {
+  padding: 6rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  color: var(--text-color);
+}
+
+#projects h2 {
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+/* Grid layout stays untouched */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* Project card */
+.project-card {
+  padding: 2rem;
+  border-radius: 12px;
+  background: transparent;
+  border: 1.5px solid var(--neon-color);
+  box-shadow: 0 0 6px var(--neon-soft), 0 0 12px var(--neon-soft) inset;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover keeps same feel */
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 10px var(--neon-soft), 0 0 18px var(--neon-soft) inset;
+}
+
+.project-card h3 {
+  color: var(--text-color);
+  margin-bottom: 0.6rem;
+}
+
+.project-card p {
+  color: var(--subtext-color);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}

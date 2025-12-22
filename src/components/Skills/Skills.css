@@ -1,0 +1,60 @@
+#skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 3rem auto;
+  text-align: center;
+  color: var(--text-color); /* theme-aware */
+  min-height: 100vh;
+}
+
+.skills-circle-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-circle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* Position text inside circles */
+.skill-circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  color: var(--skill-fill); /* theme-aware animated color */
+}
+
+.skill-circle-text span:first-child {
+  font-size: 0.8rem;
+  color: var(--text-color); /* skill name */
+}
+
+.skill-circle-text span:last-child {
+  font-size: 1rem;
+  color: var(--subtext-color); /* percent number */
+}
+
+/* SVG circles */
+.skill-circle-item svg circle:first-child {
+  stroke: var(--skill-bg); /* background circle color */
+}
+
+.skill-circle-item svg circle:last-child {
+  stroke: var(--skill-fill); /* animated stroke color */
+}
