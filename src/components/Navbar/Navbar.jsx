@@ -53,7 +53,6 @@ export default function Navbar({ mode, setMode }) {
             <a href="#contact" aria-label="Contact">
               <i className="fas fa-comment-dots"></i>
             </a>
-            <button className="nav-button">Book a Call</button>
 
             {/* Theme toggle slider */}
             <div className="theme-switch">
@@ -118,12 +117,6 @@ export default function Navbar({ mode, setMode }) {
               <a href="#contact" onClick={() => setMenuOpen(false)}>
                 Contact
               </a>
-              <button
-                className="nav-button mobile-call-button"
-                onClick={() => setMenuOpen(false)}
-              >
-                Book a Call
-              </button>
             </div>
           )}
         </nav>

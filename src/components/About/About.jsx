@@ -54,8 +54,8 @@ export default function About() {
 
       <motion.p variants={fadeSlide}>
         Hello there — I'm Samson, part designer, part developer and a full‑time
-        pixel perfectionist with over 5 years of experience, born and bred in
-        Nigeria.
+        pixel perfectionist with years of experience in crafting beautiful,
+        user-friendly websites and applications.
       </motion.p>
 
       <motion.p variants={fadeSlide} className="bold">

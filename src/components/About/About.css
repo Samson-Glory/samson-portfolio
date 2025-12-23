@@ -43,5 +43,4 @@
 .highlight {
   display: inline-block;
   color: var(--text-color);
-  text-shadow: 0 0 6px var(--neon-soft), 0 0 12px var(--neon-soft);
 }
