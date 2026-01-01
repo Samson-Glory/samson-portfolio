@@ -1,7 +1,7 @@
 import "./Projects.css";
-import portfolioImg from "../../assets/projects/portfolio.png";
-import pulseImg from "../../assets/projects/pulse.png";
-import dashboardImg from "../../assets/projects/dashboard.png";
+import portfolioImg from "../../assets/portfolio.png";
+import pulseImg from "../../assets/pulse.png";
+import dashboardImg from "../../assets/dashboard.png";
 
 const projects = [
   {
