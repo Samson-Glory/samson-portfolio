@@ -1,0 +1,121 @@
+/* ========================= */
+/* Variables per theme       */
+/* ========================= */
+body[data-theme="dark"] {
+  --section-title-color: #00ff00; /* green title */
+  --icon-color: #00ff00; /* green icons */
+  --card-bg: #111111; /* dark card bg */
+  --glow-color: rgba(0, 255, 0, 0.3); /* subtle green glow */
+}
+
+body[data-theme="light"] {
+  --section-title-color: #1e90ff; /* bluey title */
+  --icon-color: #1e90ff; /* bluey icons */
+  --card-bg: #fff; /* light card bg */
+  --glow-color: rgba(30, 144, 255, 0.3); /* soft blue glow */
+}
+
+/* Section title */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--section-title-color);
+}
+
+/* Grid layout */
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card container */
+.build-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  min-height: 140px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
+}
+
+/* Animated glow behind content (always-on) */
+.build-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    var(--glow-color),
+    rgba(0, 0, 0, 0),
+    var(--glow-color),
+    rgba(0, 0, 0, 0)
+  );
+  background-size: 300% 300%;
+  border-radius: 12px;
+  z-index: 0;
+  opacity: 0.3; /* subtle glow always visible */
+  filter: blur(12px);
+  animation: glowMove 14s linear infinite;
+}
+
+/* Intensify glow on hover */
+.build-card:hover::before {
+  opacity: 1;
+}
+
+/* Card content above glow */
+.build-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon styling */
+.build-icon {
+  font-size: 2.5rem;
+  color: var(--icon-color);
+  flex-shrink: 0;
+}
+
+/* Card text */
+.build-card h3 {
+  margin: 0 0 0.25rem 0;
+  color: var(--section-title-color);
+  font-size: 1.2rem;
+}
+
+.build-card p {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+/* Hover transform */
+.build-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 12px var(--glow-color), 0 0 18px var(--glow-color) inset;
+}
+
+/* Glow animation */
+@keyframes glowMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

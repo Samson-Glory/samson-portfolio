@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080"
+     preserveAspectRatio="xMidYMid slice">
+
+<!-- ===================================================== -->
+<!-- ======================== DEFS ======================= -->
+<!-- ===================================================== -->
+
+<defs>
+
+  
+  <!-- Subtle horizon glow -->
+  <radialGradient id="horizonGlow" cx="50%" cy="120%" r="80%">
+    <stop offset="0%" stop-color="#1b2a4a" stop-opacity="0.6"/>
+    <stop offset="100%" stop-color="#000814" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Star core -->
+  <radialGradient id="starCore" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#ffffff"/>
+    <stop offset="100%" stop-color="#9db3ff"/>
+  </radialGradient>
+
+  <!-- Far star blur -->
+  <filter id="farBlur">
+    <feGaussianBlur stdDeviation="0.6"/>
+  </filter>
+
+  <!-- Mid star blur -->
+  <filter id="midBlur">
+    <feGaussianBlur stdDeviation="0.3"/>
+  </filter>
+
+  <!-- Snow glow -->
+  <filter id="snowGlow">
+    <feGaussianBlur stdDeviation="1.4"/>
+  </filter>
+
+</defs>
+
+<!-- ===================================================== -->
+<!-- ====================== SKY BASE ===================== -->
+<!-- ===================================================== -->
+
+<rect width="1920" height="1080" fill="url(#skyDepth)" />
+<rect width="1920" height="1080" fill="url(#horizonGlow)" />
+
+<!-- ===================================================== -->
+<!-- ===================== STAR LAYER 1 ================== -->
+<!-- =================== FAR BACKGROUND ================== -->
+<!-- ===================================================== -->
+
+<g filter="url(#farBlur)" opacity="0.6">
+
+  <!-- manually distributed star field -->
+  <!-- Top quadrant -->
+  <circle cx="120" cy="90" r="1" fill="url(#starCore)"/>
+  <circle cx="300" cy="60" r="1.2" fill="url(#starCore)"/>
+  <circle cx="450" cy="140" r="0.9" fill="url(#starCore)"/>
+  <circle cx="620" cy="80" r="1.1" fill="url(#starCore)"/>
+  <circle cx="780" cy="120" r="0.8" fill="url(#starCore)"/>
+  <circle cx="940" cy="60" r="1.3" fill="url(#starCore)"/>
+  <circle cx="1100" cy="150" r="1" fill="url(#starCore)"/>
+  <circle cx="1280" cy="90" r="0.9" fill="url(#starCore)"/>
+  <circle cx="1450" cy="70" r="1.2" fill="url(#starCore)"/>
+  <circle cx="1620" cy="140" r="1" fill="url(#starCore)"/>
+  <circle cx="1780" cy="100" r="0.8" fill="url(#starCore)"/>
+
+  <!-- Mid upper -->
+  <circle cx="200" cy="240" r="1" fill="url(#starCore)"/>
+  <circle cx="360" cy="220" r="1.3" fill="url(#starCore)"/>
+  <circle cx="520" cy="260" r="0.9" fill="url(#starCore)"/>
+  <circle cx="680" cy="200" r="1" fill="url(#starCore)"/>
+  <circle cx="820" cy="280" r="1.2" fill="url(#starCore)"/>
+  <circle cx="980" cy="230" r="0.8" fill="url(#starCore)"/>
+  <circle cx="1140" cy="260" r="1.1" fill="url(#starCore)"/>
+  <circle cx="1320" cy="210" r="0.9" fill="url(#starCore)"/>
+  <circle cx="1480" cy="270" r="1.2" fill="url(#starCore)"/>
+  <circle cx="1650" cy="220" r="1" fill="url(#starCore)"/>
+  <circle cx="1820" cy="250" r="0.9" fill="url(#starCore)"/>
+
+</g>
+
+<!-- ===================================================== -->
+<!-- ===================== STAR LAYER 2 ================== -->
+<!-- ================= MID DEPTH TWINKLE ================= -->
+<!-- ===================================================== -->
+
+<g filter="url(#midBlur)" id="midStars">
+
+  <circle cx="150" cy="400" r="1.8" fill="url(#starCore)"/>
+  <circle cx="320" cy="380" r="2" fill="url(#starCore)"/>
+  <circle cx="480" cy="420" r="1.7" fill="url(#starCore)"/>
+  <circle cx="640" cy="390" r="2.1" fill="url(#starCore)"/>
+  <circle cx="820" cy="430" r="1.9" fill="url(#starCore)"/>
+  <circle cx="980" cy="410" r="2" fill="url(#starCore)"/>
+  <circle cx="1140" cy="450" r="1.8" fill="url(#starCore)"/>
+  <circle cx="1320" cy="420" r="2.2" fill="url(#starCore)"/>
+  <circle cx="1500" cy="390" r="1.9" fill="url(#starCore)"/>
+  <circle cx="1680" cy="430" r="2" fill="url(#starCore)"/>
+
+</g>
+
+<!-- ===================================================== -->
+<!-- ====================== SNOW LAYERS ================== -->
+<!-- ===================================================== -->
+
+<g id="snowBack" opacity="0.4" filter="url(#snowGlow)">
+  <circle cx="200" cy="0" r="3" fill="#cfe9ff"/>
+  <circle cx="600" cy="200" r="4" fill="#cfe9ff"/>
+  <circle cx="1000" cy="50" r="3.5" fill="#cfe9ff"/>
+  <circle cx="1500" cy="150" r="4" fill="#cfe9ff"/>
+  <circle cx="1700" cy="300" r="3" fill="#cfe9ff"/>
+</g>
+
+<g id="snowFront" opacity="0.8">
+  <circle cx="300" cy="0" r="5" fill="#ffffff"/>
+  <circle cx="800" cy="150" r="6" fill="#ffffff"/>
+  <circle cx="1200" cy="50" r="5" fill="#ffffff"/>
+  <circle cx="1600" cy="250" r="6" fill="#ffffff"/>
+</g>
+
+<!-- ===================================================== -->
+<!-- ====================== ANIMATION ==================== -->
+<!-- ===================================================== -->
+
+<style>
+
+#midStars circle {
+  animation: twinkle 4s infinite alternate ease-in-out;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+#snowBack circle {
+  animation: snowFallSlow 18s linear infinite;
+}
+
+#snowFront circle {
+  animation: snowFallFast 10s linear infinite;
+}
+
+@keyframes snowFallSlow {
+  0% { transform: translateY(-100px); }
+  100% { transform: translateY(1200px); }
+}
+
+@keyframes snowFallFast {
+  0% { transform: translateY(-150px); }
+  100% { transform: translateY(1200px); }
+}
+
+</style>
+
+</svg>

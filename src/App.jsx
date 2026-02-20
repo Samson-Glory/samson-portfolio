@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
+import BuildForYou from "./components/BuildForYou/BuildForYou";
+import GrowBusiness from "./components/GrowBusiness/GrowBusiness";
 import Projects from "./components/Projects/Projects";
 import Skills from "./components/Skills/Skills";
 import Contact from "./components/Contacts/Contacts";
@@ -36,7 +38,7 @@ export default function App() {
         <SplashScreen onFinish={() => setLoading(false)} />
       ) : (
         <>
-          {/* Pass mode + setMode to Navbar */}
+          {/* Navbar + Background */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: loading ? 0 : 1 }}
@@ -45,10 +47,35 @@ export default function App() {
             <Navbar mode={mode} setMode={setMode} />
             <BackgroundCanvas mode={mode} />
           </motion.div>
+
           <main className="page-wrapper">
+            {/* Hero Section */}
             <Hero />
+
+            {/* About Section */}
             <About />
 
+            {/* New Section: What I Can Build For You */}
+            <motion.section
+              variants={sectionContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              <BuildForYou />
+            </motion.section>
+
+            {/* New Section: How I Help Businesses Grow */}
+            <motion.section
+              variants={sectionContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              <GrowBusiness />
+            </motion.section>
+
+            {/* Projects Section */}
             <motion.section
               variants={sectionContainer}
               initial="hidden"
@@ -58,6 +85,7 @@ export default function App() {
               <Projects />
             </motion.section>
 
+            {/* Skills Section */}
             <motion.section
               variants={sectionContainer}
               initial="hidden"
@@ -67,6 +95,7 @@ export default function App() {
               <Skills />
             </motion.section>
 
+            {/* Contact Section */}
             <motion.section
               variants={sectionContainer}
               initial="hidden"
@@ -76,6 +105,7 @@ export default function App() {
               <Contact />
             </motion.section>
 
+            {/* Footer */}
             <Footer />
           </main>
         </>

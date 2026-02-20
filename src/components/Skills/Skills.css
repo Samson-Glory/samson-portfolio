@@ -1,60 +1,158 @@
-#skills {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  max-width: 800px;
-  margin: 3rem auto;
+/* =========================
+   THEME VARIABLES
+   ========================= */
+body[data-theme="light"] {
+  --skill-accent: #1e90ff;
+  --skill-bg: #fff;
+  --skill-text: #222;
+  --skill-glow: rgba(30, 144, 255, 0.3);
+}
+
+body[data-theme="dark"] {
+  --skill-accent: #00d47a;
+  --skill-bg: #0f1115;
+  --skill-text: #e6f7ee;
+  --skill-glow: rgba(0, 212, 122, 0.35);
+}
+
+/* =========================
+   SECTION
+   ========================= */
+.skills-section {
+  padding: 6rem 1.5rem;
   text-align: center;
-  color: var(--text-color); /* theme-aware */
-  min-height: 100vh;
 }
 
-.skills-circle-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
+.skills-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--skill-accent);
+  margin-bottom: 0.6rem;
 }
 
-.skill-circle-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+.skills-sub {
+  opacity: 0.75;
+  max-width: 620px;
+  margin: 0 auto 3.5rem auto;
+}
+
+/* =========================
+   GRID
+   ========================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
   position: relative;
 }
 
-/* Position text inside circles */
-.skill-circle-text {
+/* =========================
+   CARDS
+   ========================= */
+.skill-card {
+  position: relative;
+  background: var(--skill-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  overflow: hidden;
+
+  /* floating entrance */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* subtle neon glow behind card */
+.skill-card::before {
+  content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-weight: bold;
-  color: var(--skill-fill); /* theme-aware animated color */
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    var(--skill-glow),
+    rgba(0, 0, 0, 0) 50%,
+    var(--skill-glow),
+    rgba(0, 0, 0, 0)
+  );
+  background-size: 300% 300%;
+  border-radius: 16px;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.3s ease;
+  animation: glowLoop 4s linear infinite;
 }
 
-.skill-circle-text span:first-child {
-  font-size: 0.8rem;
-  color: var(--text-color); /* skill name */
+/* hover effect */
+.skill-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 28px var(--skill-glow);
 }
 
-.skill-circle-text span:last-child {
-  font-size: 1rem;
-  color: var(--subtext-color); /* percent number */
+.skill-card:hover::before {
+  opacity: 1;
 }
 
-/* SVG circles */
-.skill-circle-item svg circle:first-child {
-  stroke: var(--skill-bg); /* background circle color */
+/* card content above glow */
+.skill-card > * {
+  position: relative;
+  z-index: 1;
 }
 
-.skill-circle-item svg circle:last-child {
-  stroke: var(--skill-fill); /* animated stroke color */
+/* =========================
+   ICONS
+   ========================= */
+.skill-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.2) rotate(10deg);
+  filter: brightness(1.2);
+}
+
+/* =========================
+   TEXT
+   ========================= */
+.skill-card h3 {
+  color: var(--skill-accent);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.skill-card p {
+  color: var(--skill-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowLoop {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

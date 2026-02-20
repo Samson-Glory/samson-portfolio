@@ -56,7 +56,7 @@ export default function Hero() {
         transition={{ delay: 3.8, duration: 0.7, ease: "easeOut" }}
       >
         <a href="#contact" className="sec-button">
-          Hire Me
+          Start a Project
         </a>
         <a
           href="https://wa.me/2349155834434"

@@ -1,75 +1,55 @@
 import "./Contacts.css";
+import { MdEmail } from "react-icons/md";
+import { FaLinkedin, FaTwitter } from "react-icons/fa";
 
-export default function Contacts() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const message = e.target.message.value;
-
-    const mailtoLink = `mailto:your.email@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(
-      name
-    )}&body=${encodeURIComponent(
-      message + "\n\nFrom: " + name + " <" + email + ">"
-    )}`;
-
-    window.location.href = mailtoLink;
-
-    // Optional: reset form
-    e.target.reset();
-  };
-
+export default function Contact() {
   return (
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <form className="section-box" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-          style={{
-            background: "var(--bg-color)",
-            color: "var(--text-color)",
-            border: `1px solid var(--neon-color)`,
-            padding: "0.5rem",
-            borderRadius: "6px",
-            marginBottom: "1rem",
-          }}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-          style={{
-            background: "var(--bg-color)",
-            color: "var(--text-color)",
-            border: `1px solid var(--neon-color)`,
-            padding: "0.5rem",
-            borderRadius: "6px",
-            marginBottom: "1rem",
-          }}
-        />
-        <textarea
-          name="message"
-          rows="5"
-          placeholder="Your Message"
-          required
-          style={{
-            background: "var(--bg-color)",
-            color: "var(--text-color)",
-            border: `1px solid var(--neon-color)`,
-            padding: "0.5rem",
-            borderRadius: "6px",
-            marginBottom: "1rem",
-          }}
-        />
-        <button type="submit" className="contact-submit">
-          Send Message
-        </button>
-      </form>
+    <section id="contact" className="contact-section">
+      <h2 className="contact-title">Contact Me</h2>
+      <p className="contact-sub">
+        Got a project or just want to chat? Reach out and let’s build something
+        amazing.
+      </p>
+
+      <div className="contact-grid">
+        <div className="contact-card">
+          <MdEmail className="contact-icon" />
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:ek.samsonglory@gmail.com">
+              ek.samsonglory@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <div className="contact-card">
+          <FaLinkedin className="contact-icon" />
+          <h3>LinkedIn</h3>
+          <p>
+            <a
+              href="https://www.linkedin.com/in/samson-glory/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              linkedin.com/in/samson-glory
+            </a>
+          </p>
+        </div>
+
+        <div className="contact-card">
+          <FaTwitter className="contact-icon" />
+          <h3>Twitter</h3>
+          <p>
+            <a
+              href="https://twitter.com/ekSamsonDev"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @ekSamsonDev
+            </a>
+          </p>
+        </div>
+      </div>
     </section>
   );
 }

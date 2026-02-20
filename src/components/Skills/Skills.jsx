@@ -1,69 +1,61 @@
-import { motion } from "framer-motion";
 import "./Skills.css";
 
 const skills = [
-  { name: "HTML", percent: 95, color: "#f16529" },
-  { name: "CSS", percent: 90, color: "#2965f1" },
-  { name: "JavaScript", percent: 85, color: "#f0db4f" },
-  { name: "React", percent: 80, color: "#61dafb" },
-  { name: "Next.js", percent: 75, color: "#000000" },
-  { name: "Node.js", percent: 70, color: "#3c873a" },
-  { name: "MongoDB", percent: 65, color: "#4db33d" },
-  { name: "Git", percent: 90, color: "#f05032" },
+  {
+    title: "HTML5",
+    desc: "Semantic, accessible HTML for SEO and responsive design.",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  },
+  {
+    title: "CSS3",
+    desc: "Modern layouts with Flexbox, Grid, and subtle animations.",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  },
+  {
+    title: "JavaScript",
+    desc: "Dynamic interactions, ES6+ features, and DOM mastery.",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  {
+    title: "React",
+    desc: "Component-based UI, hooks, and scalable single-page apps.",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    title: "WordPress",
+    desc: "Custom themes, plugins, and CMS-driven websites.",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg",
+  },
+  {
+    title: "SEO",
+    desc: "On-page optimization, meta tags, and search visibility.",
+    icon: "https://cdn-icons-png.flaticon.com/512/906/906175.png",
+  },
+  {
+    title: "Node.js",
+    desc: "Server-side logic, REST APIs, and backend integration.",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    title: "Git",
+    desc: "Version control, branching strategies, and collaboration.",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  },
 ];
 
 export default function Skills() {
-  const radius = 60;
-  const stroke = 20;
-  const normalizedRadius = radius - stroke / 2;
-  const circumference = normalizedRadius * 2 * Math.PI;
-
   return (
-    <section id="skills">
-      <h2>Skills</h2>
-      <br />
-      <div className="skills-circle-list">
-        {skills.map((skill, index) => {
-          const strokeDashoffset =
-            circumference - (skill.percent / 100) * circumference;
-          return (
-            <div key={skill.name} className="skill-circle-item">
-              <svg height={radius * 2} width={radius * 2}>
-                <circle
-                  stroke="#111"
-                  fill="transparent"
-                  strokeWidth={stroke}
-                  r={normalizedRadius}
-                  cx={radius}
-                  cy={radius}
-                />
-                <motion.circle
-                  stroke="lime"
-                  fill="transparent"
-                  strokeWidth={stroke}
-                  r={normalizedRadius}
-                  cx={radius}
-                  cy={radius}
-                  strokeDasharray={circumference}
-                  strokeDashoffset={circumference}
-                  initial={{ strokeDashoffset: circumference }}
-                  whileInView={{ strokeDashoffset }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{
-                    duration: 1.2,
-                    ease: "easeOut",
-                    delay: index * 0.1,
-                  }}
-                  strokeLinecap="round"
-                />
-              </svg>
-              <div className="skill-circle-text">
-                <span>{skill.name}</span>
-                <span>{skill.percent}%</span>
-              </div>
-            </div>
-          );
-        })}
+    <section id="skills" className="skills-section">
+      <h2 className="skills-title">Skills</h2>
+
+      <div className="skills-grid">
+        {skills.map((skill, index) => (
+          <div className="skill-card" key={index}>
+            <img src={skill.icon} alt={skill.title} className="skill-icon" />
+            <h3>{skill.title}</h3>
+            <p>{skill.desc}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
