@@ -2,12 +2,14 @@
    HERO SECTION
    ========================= */
 #hero {
-  min-height: 100vh;
+  min-height: 100dvh;
   padding-top: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: visible;
+  position: relative;
+  z-index: 1;
 }
 
 .hero {
