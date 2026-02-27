@@ -1,7 +1,37 @@
 import React from "react";
 import "./PixelBackground.css";
 
-const BackgroundCanvas = React.memo(() => {
+const BackgroundCanvas = React.memo(({ simplified = false }) => {
+  // Adjust number of elements based on simplified/mobile mode
+  const starCount = simplified ? 20 : 80;
+  const snowCount = simplified ? 5 : 20;
+
+  // Generate random positions for stars
+  const starsFar = Array.from({ length: starCount }, () => ({
+    cx: Math.random() * 1920,
+    cy: Math.random() * 1080,
+    r: Math.random() * 1.5 + 0.5,
+  }));
+
+  const starsMid = Array.from({ length: starCount / 2 }, () => ({
+    cx: Math.random() * 1920,
+    cy: Math.random() * 1080,
+    r: Math.random() * 2 + 0.5,
+  }));
+
+  // Generate snow positions
+  const snowBack = Array.from({ length: snowCount }, () => ({
+    cx: Math.random() * 1920,
+    cy: Math.random() * 1080,
+    r: Math.random() * 3 + 1,
+  }));
+
+  const snowFront = Array.from({ length: snowCount }, () => ({
+    cx: Math.random() * 1920,
+    cy: Math.random() * 1080,
+    r: Math.random() * 3 + 1,
+  }));
+
   return (
     <div className="sky-bg">
       <svg
@@ -22,30 +52,34 @@ const BackgroundCanvas = React.memo(() => {
         </defs>
 
         {/* Background */}
-
         <rect width="100%" height="100%" fill="url(#horizonGlow)" />
 
-        {/* Stars */}
+        {/* Far Stars */}
         <g className="stars-far">
-          <circle cx="120" cy="90" r="1" fill="url(#starCore)" />
-          <circle cx="620" cy="80" r="1.1" fill="url(#starCore)" />
-          <circle cx="1780" cy="100" r="0.8" fill="url(#starCore)" />
+          {starsFar.map((s, i) => (
+            <circle key={i} cx={s.cx} cy={s.cy} r={s.r} fill="url(#starCore)" />
+          ))}
         </g>
 
+        {/* Mid Stars */}
         <g className="stars-mid">
-          <circle cx="150" cy="400" r="2" fill="url(#starCore)" />
-          <circle cx="1320" cy="420" r="2.2" fill="url(#starCore)" />
+          {starsMid.map((s, i) => (
+            <circle key={i} cx={s.cx} cy={s.cy} r={s.r} fill="url(#starCore)" />
+          ))}
         </g>
 
-        {/* Snow */}
+        {/* Snow Back */}
         <g className="snow-back">
-          <circle cx="200" cy="0" r="3" fill="#cfe9ff" />
-          <circle cx="1000" cy="50" r="3.5" fill="#cfe9ff" />
+          {snowBack.map((s, i) => (
+            <circle key={i} cx={s.cx} cy={s.cy} r={s.r} fill="#cfe9ff" />
+          ))}
         </g>
 
+        {/* Snow Front */}
         <g className="snow-front">
-          <circle cx="300" cy="0" r="5" fill="#ffffff" />
-          <circle cx="1200" cy="50" r="5" fill="#ffffff" />
+          {snowFront.map((s, i) => (
+            <circle key={i} cx={s.cx} cy={s.cy} r={s.r} fill="#ffffff" />
+          ))}
         </g>
       </svg>
     </div>
