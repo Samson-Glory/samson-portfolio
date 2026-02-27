@@ -59,7 +59,7 @@ export default function Hero() {
           Start a Project
         </a>
         <a
-          href="https://wa.me/2349155834434"
+          href="https://wa.me/2348167950438"
           target="_blank"
           rel="noopener noreferrer"
           className="sec-button whatsapp-button"
